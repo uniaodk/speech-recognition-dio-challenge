@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Speech Recgonition</title>
+	<link rel="shortcut icon" href="https://www.svgrepo.com/show/442063/audio-input-microphone-symbolic.svg" type="image/x-icon">
+	<link rel="stylesheet" href="./styles/global.css">
+</head>
+
+<body>
+	<main class="sr-container">
+		<div class="sr-game">
+			<div class="sr-game-screen">
+				<div class="sr-game-screen___title">
+					<img src="./assets/img/colors.png" alt="Colors">
+					<h1>Say the name of the color in english...</h1>
+				</div>
+				<div class="sr-game-screen___round">
+					<div id="circle-color"></div>
+					<h2 id="description-color">Yellow</h2>
+					<div id="score-animation">-10 pts</div>
+				</div>
+				<span id="transcript"></span>
+				<button id="answer-button" onclick="listenAudio()">Answer</button>
+			</div>
+			<div class="sr-game-boardscore">
+				<h3>Score</h3>
+				<h1 id="score">000<span class="points">&nbsp;pts</span></h1>
+			</div>
+		</div>
+	</main>
+	<script src="./scripts/main.js"></script>
+</body>
+
+</html>

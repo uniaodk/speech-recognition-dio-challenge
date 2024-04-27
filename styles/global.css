@@ -1,0 +1,170 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	color: #fff;
+	font-family: sans-serif;
+	user-select: none;
+}
+
+.sr-container {
+	width: 100vw;
+	height: 100vh;
+	background-image: url(../assets/img/backsground.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
+.sr-game {
+	display: flex;
+	gap: 2rem;
+	width: 80%;
+	height: 80%;
+	background-color: rgba(0, 0, 0, .5);
+	border-radius: 2rem;
+	position: absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.sr-game-screen {
+	display: flex;
+	flex: auto;
+	width: 100%;
+	padding: 3rem;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	gap: 2rem;
+}
+
+.sr-game-screen___title {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+}
+
+.sr-game-screen___title img {
+	width: 6rem;
+	height: 6rem;
+}
+
+.sr-game-screen___round {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	position: relative;
+}
+
+.sr-game-screen___round #circle-color {
+	width: 10rem;
+	height: 10rem;
+	border-radius: 50%;
+}
+
+.sr-game-screen___round #description-color {
+	text-transform: capitalize;
+}
+
+.sr-game-screen___round #score-animation {
+	position: absolute;
+	top: 50%;
+	right: -40%;
+	font-size: 0rem;
+	font-weight: bold;
+	opacity: 1;
+	animation-duration: 3s;
+}
+
+.sr-game-boardscore {
+	position: absolute;
+	top: 2rem;
+	left: 2rem;
+}
+
+.sr-game-boardscore h3 {
+	font-weight: lighter;
+	color: khaki;
+}
+
+.sr-game-boardscore .points {
+	font-size: 1rem;
+}
+
+.sr-game-screen #answer-button {
+	background-color: white;
+	color: black;
+	padding: .5rem 2rem;
+	width: 100%;
+	max-width: 300px;
+	border: none;
+	border-radius: 1rem;
+	font-size: 1.2rem;
+	font-weight: bold;
+	cursor: pointer;
+	box-shadow: 3px 5px 10px black;
+	transition: .25s ease-in-out;
+}
+
+.sr-game-screen #answer-button:hover,
+.sr-game-screen #answer-button:active {
+	box-shadow: none;
+}
+
+.sr-game-screen #transcript {
+	font-style: italic;
+}
+
+@media screen and (max-width: 678px) {
+
+	.sr-game {
+		width: 95%;
+		height: 95%;
+	}
+
+	.sr-game-screen___title {
+		margin-top: 3rem;
+		font-size: 0.9rem;
+	}
+
+	.sr-game-screen___round #circle-color {
+		width: 7rem;
+		height: 7rem;
+	}
+}
+
+
+@keyframes popup-success {
+	0% {
+		color: green;
+		opacity: 1;
+		font-size: 3rem;
+	}
+	99% {
+		transform: translate(1rem, -8rem);
+		opacity: 0;
+		font-size: 0;
+	}
+}
+
+@keyframes popup-failed {
+	0% {
+		color: red;
+		opacity: 1;
+		font-size: 3rem;
+	}
+	70% {
+		transform: translate(1rem, 8rem);
+		opacity: 0;
+		font-size: 0;
+	}
+}
