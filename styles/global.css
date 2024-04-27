@@ -133,12 +133,12 @@
 
 	.sr-game-screen___title {
 		margin-top: 3rem;
-		font-size: 0.9rem;
+		font-size: 0.8rem;
 	}
 
 	.sr-game-screen___round #circle-color {
-		width: 7rem;
-		height: 7rem;
+		width: 5rem;
+		height: 5rem;
 	}
 }
 
