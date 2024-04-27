@@ -5,10 +5,10 @@ const descriptionColor = document.getElementById("description-color");
 const answerButton = document.getElementById("answer-button");
 const transcriptElement = document.getElementById("transcript");
 const scoreAnimation = document.getElementById("score-animation");
-const successAudio = new Audio("/assets/audio/success.mp3");
-const failedAudio = new Audio("/assets/audio/failed.mp3");
+const successAudio = new Audio("assets/audio/success.mp3");
+const failedAudio = new Audio("assets/audio/failed.mp3");
 let recognition = null;
-let isListening = false;
+let disableAnswer = false;
 let score = 0;
 let color;
 
@@ -40,6 +40,9 @@ function updateScore(points) {
 	setTimeout(() => {
 		scoreAnimation.style.animationName = "";
 		transcriptElement.innerText = "";
+		answerButton.style.opacity = 1;
+		answerButton.style.cursor = "pointer";
+		disableAnswer = false;
 		sortColor();
 	}, 3000);
 	score += points;
@@ -47,28 +50,27 @@ function updateScore(points) {
 }
 
 function listenAudio() {
-	if (isListening) {
-		recognition.stop();
-		return;
-	}
+	if (disableAnswer) return;
 	recognition.start();
 }
 
 function configSpeechRecognition() {
 	recognition = new webkitSpeechRecognition() || new SpeechRecognition();
-	recognition.continuous = true;
+	recognition.continuous = false;
 	recognition.lang = "en-US";
 	recognition.onstart = function () {
-		isListening = true;
 		answerButton.style.backgroundColor = "khaki";
 		answerButton.innerText = "Listening...";
 	}
 	recognition.onend = function () {
-		isListening = false;
 		answerButton.style.backgroundColor = "white";
 		answerButton.innerText = "Answer";
+		recognition.stop();
 	}
 	recognition.onresult = function (event) {
+		disableAnswer = true;
+		answerButton.style.opacity = .5;
+		answerButton.style.cursor = "not-allowed";
 		let transcript = "";
 		for (let i = event.resultIndex; i < event.results.length; ++i) {
 			transcript += event.results[i][0].transcript;
